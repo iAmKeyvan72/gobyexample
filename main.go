@@ -3,19 +3,29 @@ package main
 import "fmt"
 
 func main() {
-	m := make(map[string]int)
 
-	m["hello"] = 2
-	m["chetori"] = 4
+	list := []int{5, 2, 66}
+	sum := 0
 
-	fmt.Println((m))
+	for _, num := range list {
+		sum += num
+	}
 
-	delete(m, "hello")
-	fmt.Println((m))
+	fmt.Println("sum is: ", sum)
 
-	_, prs := m["hello"]
-	fmt.Println(prs)
+	for index, num := range list {
+		if index == 2 {
+			fmt.Println("this is ", index+1, "rd item which is: ", num)
+		}
+	}
 
-	my := map[string]string{"name": "Keyvan", "deh": "Karkabood"}
-	fmt.Println(my)
+	objs := map[string]string{"first": "hey", "second": "bro", "third": "how are you?"}
+	for key, value := range objs {
+		fmt.Println(key, ": ", value)
+	}
+
+	for key := range objs {
+		fmt.Println(key)
+	}
+
 }
