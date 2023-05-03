@@ -2,12 +2,13 @@ package main
 
 import "fmt"
 
-func plus(a int, b int) int {
-	return a + b
+func returnTwo() (string, int) {
+	return "hoy", 3
 }
 
 func main() {
-	sum := plus(45, 2342)
+	fmt.Println(returnTwo())
 
-	fmt.Println(sum)
+	_, second := returnTwo()
+	fmt.Println(second)
 }
