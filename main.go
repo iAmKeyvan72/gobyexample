@@ -2,13 +2,22 @@ package main
 
 import "fmt"
 
-func returnTwo() (string, int) {
-	return "hoy", 3
+func sum(nums ...int) {
+	fmt.Print(nums)
+	total := 0
+
+	for _, num := range nums {
+		total += num
+	}
+
+	fmt.Println(total)
 }
 
 func main() {
-	fmt.Println(returnTwo())
+	sum(1, 2)
 
-	_, second := returnTwo()
-	fmt.Println(second)
+	sum(49, 21, 324, 624)
+
+	nums := []int{23, 63, 7567, 6586, 345}
+	sum(nums...)
 }
