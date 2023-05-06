@@ -2,24 +2,24 @@ package main
 
 import "fmt"
 
-func fact(n int) int {
-	if n == 0 {
-		return 1
-	}
-	return n * fact(n-1)
+func zeroVal(n int) {
+	n = 0
+}
+
+func zeroPtr(n *int) {
+	*n = 0
 }
 
 func main() {
-	fmt.Println(fact(7))
+	i := 10
 
-	var fib func(n int) int
+	fmt.Println(i)
 
-	fib = func(n int) int {
-		if n < 2 {
-			return n
-		}
-		return fib(n-1) + fib(n-2)
-	}
+	zeroVal(i)
+	fmt.Println(i)
 
-	fmt.Println(fib(7))
+	zeroPtr(&i)
+	fmt.Println(i)
+	fmt.Println(&i)
+
 }
