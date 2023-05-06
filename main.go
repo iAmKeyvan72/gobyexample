@@ -1,32 +1,47 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+type geometrics interface {
+	area() float64
+	perim() float64
+}
 
 type rect struct {
-	width, height int
+	width, height float64
 }
 
-func (r *rect) multiply(m int) {
-	r.width *= m
-	r.height *= 2 * m
+type circle struct {
+	radius float64
 }
 
-func (r *rect) area() int {
+func (r *rect) area() float64 {
 	return r.width * r.height
 }
+func (r *rect) perim() float64 {
+	return 2 * (r.height + r.width)
+}
 
-func (r rect) perim() int {
-	return 2*r.width + 2*r.height
+func (c *circle) area() float64 {
+	return math.Pi * c.radius * c.radius
+}
+
+func (c *circle) perim() float64 {
+	return 2 * math.Pi * c.radius
+}
+
+func measure(g geometrics) {
+	fmt.Println("area: ", g.area())
+	fmt.Println("perim: ", g.perim())
 }
 
 func main() {
-	r := rect{width: 10, height: 5}
+	rectangel := rect{height: 2, width: 5}
+	measure(&rectangel)
 
-	fmt.Println("area: ", r.area())
-	fmt.Println("perim:", r.perim())
-
-	rp := &r
-	rp.multiply(2)
-	fmt.Println("area: ", rp.area())
-	fmt.Println("perim:", rp.perim())
+	cir := circle{radius: 34}
+	measure(&cir)
 }
